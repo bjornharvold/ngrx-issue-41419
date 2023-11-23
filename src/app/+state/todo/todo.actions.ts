@@ -8,3 +8,8 @@ export const setToReady = createAction(
   '[ToDo] Set ready',
   props<{ flag: boolean }>(),
 );
+
+export const setToReadySuccess = createAction(
+  '[ToDo] Set ready success',
+  props<{ flag: boolean }>(),
+);

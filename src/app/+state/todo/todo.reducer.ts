@@ -24,7 +24,7 @@ export const initialState: State = {
 const todoReducer = createReducer(
   initialState,
   on(
-    ToDoActions.setToReady,
+    ToDoActions.setToReadySuccess,
     (state, { flag }) => ({
       ...state,
       ready: true,

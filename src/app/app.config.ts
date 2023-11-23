@@ -19,6 +19,7 @@ import { ActionReducer, provideStore } from '@ngrx/store';
 import { RouterState, provideRouterStore } from '@ngrx/router-store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideEffects } from '@ngrx/effects';
+import { provideTodo } from './+state/provider';
 
 export function logger(reducer: ActionReducer<any>): ActionReducer<any> {
   return (state, action) => {
@@ -75,5 +76,6 @@ export const appConfig: ApplicationConfig = {
       withViewTransitions()
     ),
     provideStoreDevtools(),
+    provideTodo(), // our todo state
   ],
 };
