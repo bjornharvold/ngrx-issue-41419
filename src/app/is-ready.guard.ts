@@ -5,7 +5,7 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { Observable, tap } from 'rxjs';
+import { Observable, filter, tap } from 'rxjs';
 import { TodoFacade } from './application/todo.facade';
 
 export const isReady: CanActivateFn = (
@@ -19,6 +19,7 @@ export const isReady: CanActivateFn = (
   const facade = inject(TodoFacade);
 
   return facade.isReady$.pipe(
+    filter(flag => flag === true),
     tap(flag => console.log('Guards says: ready', flag))
   );
 };
