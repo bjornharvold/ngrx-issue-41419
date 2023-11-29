@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { TodoFacade } from './application/todo.facade';
+import { StateService } from './state.service';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +13,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('Setting ready state...');
-    this.facade.ready();
+    this.service.markAsReady();
   }
 
   constructor(
-    private readonly facade: TodoFacade,
+    private readonly service: StateService,
   ){}
 }

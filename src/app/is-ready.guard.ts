@@ -6,7 +6,7 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable, filter, tap } from 'rxjs';
-import { TodoFacade } from './application/todo.facade';
+import { StateService } from './state.service';
 
 export const isReady: CanActivateFn = (
   route: ActivatedRouteSnapshot,
@@ -16,10 +16,11 @@ export const isReady: CanActivateFn = (
   | Promise<boolean | UrlTree>
   | boolean
   | UrlTree => {
-  const facade = inject(TodoFacade);
+  const service = inject(StateService);
 
-  return facade.isReady$.pipe(
+  return service.ready$.pipe(
+    tap(flag => console.log('Ready?: ', flag)),
     filter(flag => flag === true),
-    tap(flag => console.log('Guards says: ready', flag))
+    tap(() => console.log('Yes ready'))
   );
 };
